@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,8 +34,12 @@ public class Usuario implements java.io.Serializable {
     private String ApellidoSecond;
     @Column(name = "Password", length = 50)
     private String Password;
+    
+    @ManyToOne
+    @JoinColumn(name="AreaTrabajo_id", nullable=false)
+    private AreaTrabajo areaTrabajo;
 
-    public Usuario(Integer id, String correo, String NombreFirst, String NombreSecond, String ApellidoFirst, String ApellidoSecond, String Password) {
+    public Usuario(Integer id, String correo, String NombreFirst, String NombreSecond, String ApellidoFirst, String ApellidoSecond, String Password, AreaTrabajo areaTrabajo) {
         this.id = id;
         this.correo = correo;
         this.NombreFirst = NombreFirst;
@@ -41,10 +47,10 @@ public class Usuario implements java.io.Serializable {
         this.ApellidoFirst = ApellidoFirst;
         this.ApellidoSecond = ApellidoSecond;
         this.Password = Password;
+        this.areaTrabajo = areaTrabajo;
     }
 
     
-   
     public Usuario() {
     }
 
@@ -104,6 +110,13 @@ public class Usuario implements java.io.Serializable {
         this.Password = Password;
     }
 
-    
-    
+    public AreaTrabajo getAreaTrabajo() {
+        return areaTrabajo;
+    }
+
+    public void setAreaTrabajo(AreaTrabajo areaTrabajo) {
+        this.areaTrabajo = areaTrabajo;
+    }
+
+            
 }

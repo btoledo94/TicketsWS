@@ -5,6 +5,7 @@
  */
 package edu.miumg.gt.ticketsws.ws.impl;
 
+import edu.miumg.gt.ticketsws.entities.Departamento;
 import edu.miumg.gt.ticketsws.entities.Usuario;
 import edu.miumg.gt.ticketsws.ws.inte.UsuarioInt;
 import edu.miumg.gt.ticketsws.ws.repo.UsuarioRepo;
