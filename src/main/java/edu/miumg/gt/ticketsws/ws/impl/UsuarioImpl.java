@@ -28,16 +28,13 @@ public class UsuarioImpl implements UsuarioInt{
     }
     
     @Override
-    public ResponseEntity<Usuario> create(String correo) throws Exception {
-        Usuario usuario = new Usuario();
-        usuario.setId(1);
-        usuario.setNombreFirst("Byron");
-        usuario.setNombreSecond("Steven");
-        usuario.setApellidoFirst("Toledo");
-        usuario.setApellidoSecond("Medina");
-        usuario.setPassword("123456");
-        usuario.setCorreo(correo);
-        return new ResponseEntity(usuarioRepo.save(usuario), HttpStatus.OK);
+    public ResponseEntity<Usuario> create(Usuario usuario) throws Exception {
+        Usuario usuar = new Usuario();
+        usuar.setCorreo(usuario.getCorreo());
+        usuar.setNombreUsuario(usuario.getNombreUsuario());
+        usuar.setPassword(usuario.getPassword());
+        
+        return new ResponseEntity(usuarioRepo.save(usuar), HttpStatus.OK);
     }
     
 }

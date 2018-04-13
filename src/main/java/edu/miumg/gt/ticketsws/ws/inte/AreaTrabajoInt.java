@@ -5,11 +5,11 @@
  */
 package edu.miumg.gt.ticketsws.ws.inte;
 
-import edu.miumg.gt.ticketsws.entities.Usuario;
+import edu.miumg.gt.ticketsws.entities.AreaTrabajo;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,18 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @author BYRON TOLEDO
  */
 @RestController()
-@RequestMapping(value = "/api/Usuario",produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-public interface UsuarioInt {
+@RequestMapping(value = "/api/Departamento",produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
+public interface AreaTrabajoInt {
     
     @Transactional(readOnly = true)
-    @RequestMapping(value={"","/"},method=RequestMethod.GET)
-    public ResponseEntity<Usuario> findAll() throws Exception;
-    
-    @Transactional()
-    @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ResponseEntity<Usuario> create(
-    // @RequestParam(value = "correo", defaultValue = "") String correo
-            @RequestBody Usuario usuario
+    @RequestMapping(value={"","/getfindByDepartamentoId"},method=RequestMethod.GET)
+    public ResponseEntity<AreaTrabajo> findAll(
+            @RequestParam(value = "departamentoId" , defaultValue = "0") Integer departamentoId
     ) throws Exception;
-    
 }

@@ -23,34 +23,26 @@ public class Usuario implements java.io.Serializable {
     private Integer id;
     
     @Column(name = "Correo", length = 100)
-    private String correo;
-    @Column(name = "PrimerNombre", length = 50)
-    private String NombreFirst;
-    @Column(name = "SegundoNombre", length = 50)
-    private String NombreSecond;
-    @Column(name = "PrimerApellido", length = 50)
-    private String ApellidoFirst;
-    @Column(name = "SegundoApellido", length = 50)
-    private String ApellidoSecond;
-    @Column(name = "Password", length = 50)
+    private String Correo;
+    
+   @Column(name = "UsuarioNombre", length = 50)
+    private String NombreUsuario;
+   
+   @Column(name = "Password", length = 50)
     private String Password;
     
-    @ManyToOne
-    @JoinColumn(name="AreaTrabajo_id", nullable=false)
-    private AreaTrabajo areaTrabajo;
+  //  @ManyToOne
+   // @JoinColumn(name="AreaTrabajo_id", nullable=false)
+   // private AreaTrabajo areaTrabajo;
 
-    public Usuario(Integer id, String correo, String NombreFirst, String NombreSecond, String ApellidoFirst, String ApellidoSecond, String Password, AreaTrabajo areaTrabajo) {
+    public Usuario(Integer id, String Correo, String NombreUsuario, String Password) {
         this.id = id;
-        this.correo = correo;
-        this.NombreFirst = NombreFirst;
-        this.NombreSecond = NombreSecond;
-        this.ApellidoFirst = ApellidoFirst;
-        this.ApellidoSecond = ApellidoSecond;
+        this.Correo = Correo;
+        this.NombreUsuario = NombreUsuario;
         this.Password = Password;
-        this.areaTrabajo = areaTrabajo;
     }
 
-    
+   
     public Usuario() {
     }
 
@@ -63,43 +55,19 @@ public class Usuario implements java.io.Serializable {
     }
 
     public String getCorreo() {
-        return correo;
+        return Correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
     }
 
-    public String getNombreFirst() {
-        return NombreFirst;
+    public String getNombreUsuario() {
+        return NombreUsuario;
     }
 
-    public void setNombreFirst(String NombreFirst) {
-        this.NombreFirst = NombreFirst;
-    }
-
-    public String getNombreSecond() {
-        return NombreSecond;
-    }
-
-    public void setNombreSecond(String NombreSecond) {
-        this.NombreSecond = NombreSecond;
-    }
-
-    public String getApellidoFirst() {
-        return ApellidoFirst;
-    }
-
-    public void setApellidoFirst(String ApellidoFirst) {
-        this.ApellidoFirst = ApellidoFirst;
-    }
-
-    public String getApellidoSecond() {
-        return ApellidoSecond;
-    }
-
-    public void setApellidoSecond(String ApellidoSecond) {
-        this.ApellidoSecond = ApellidoSecond;
+    public void setNombreUsuario(String NombreUsuario) {
+        this.NombreUsuario = NombreUsuario;
     }
 
     public String getPassword() {
@@ -109,14 +77,5 @@ public class Usuario implements java.io.Serializable {
     public void setPassword(String Password) {
         this.Password = Password;
     }
-
-    public AreaTrabajo getAreaTrabajo() {
-        return areaTrabajo;
-    }
-
-    public void setAreaTrabajo(AreaTrabajo areaTrabajo) {
-        this.areaTrabajo = areaTrabajo;
-    }
-
             
 }
