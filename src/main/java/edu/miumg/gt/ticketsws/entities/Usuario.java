@@ -17,32 +17,33 @@ import javax.persistence.Table;
 @Table(name = "USUARIO", schema = "TICKETS")
 public class Usuario implements java.io.Serializable {
  
-@Id
+@Id()
 @Column(name = "ID_Usuario")
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "Correo", length = 100)
+    @Column(name = "Correo")
     private String Correo;
     
-   @Column(name = "UsuarioNombre", length = 50)
+   @Column(name = "UsuarioNombre")
     private String NombreUsuario;
    
-   @Column(name = "Password", length = 50)
+   @Column(name = "Password")
     private String Password;
     
-  //  @ManyToOne
-   // @JoinColumn(name="AreaTrabajo_id", nullable=false)
-   // private AreaTrabajo areaTrabajo;
+   @ManyToOne
+    @JoinColumn(name="AreaTrabajo_id")
+    private AreaTrabajo areaTrabajo;
 
-    public Usuario(Integer id, String Correo, String NombreUsuario, String Password) {
+    public Usuario(Integer id, String Correo, String NombreUsuario, String Password, AreaTrabajo areaTrabajo) {
         this.id = id;
         this.Correo = Correo;
         this.NombreUsuario = NombreUsuario;
         this.Password = Password;
+        this.areaTrabajo = areaTrabajo;
     }
 
-   
+       
     public Usuario() {
     }
 
@@ -77,5 +78,13 @@ public class Usuario implements java.io.Serializable {
     public void setPassword(String Password) {
         this.Password = Password;
     }
-            
+
+    public AreaTrabajo getAreaTrabajo() {
+        return areaTrabajo;
+    }
+
+    public void setAreaTrabajo(AreaTrabajo areaTrabajo) {
+        this.areaTrabajo = areaTrabajo;
+    }
+        
 }

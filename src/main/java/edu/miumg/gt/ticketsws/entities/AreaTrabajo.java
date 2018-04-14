@@ -1,5 +1,6 @@
 package edu.miumg.gt.ticketsws.entities;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,16 +13,16 @@ import javax.persistence.Table;
 @Entity()
 @Table(name = "AreaTrabajo", schema = "TICKETS")
 public class AreaTrabajo implements java.io.Serializable{
-    @Id
+    @Id()
     @Column(name = "ID_Areatrabajo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "NameArea", length = 50)
+    @Column(name = "NameArea")
     private String NombreArea;
 
     @ManyToOne
-    @JoinColumn(name="departamento_id", nullable=false)
+    @JoinColumn(name="departamento_id")
     private Departamento departamento;
 
     public AreaTrabajo(Integer id, String NombreArea, Departamento departamento) {
@@ -58,4 +59,5 @@ public class AreaTrabajo implements java.io.Serializable{
         this.departamento = departamento;
     }
     
+           
 }

@@ -5,7 +5,7 @@
  */
 package edu.miumg.gt.ticketsws.ws.impl;
 
-import edu.miumg.gt.ticketsws.entities.Departamento;
+
 import edu.miumg.gt.ticketsws.entities.Usuario;
 import edu.miumg.gt.ticketsws.ws.inte.UsuarioInt;
 import edu.miumg.gt.ticketsws.ws.repo.UsuarioRepo;
@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 public class UsuarioImpl implements UsuarioInt{
     @Autowired()
     private UsuarioRepo usuarioRepo;
+    
     @Override
     public ResponseEntity<Usuario> findAll() throws Exception {
         return new ResponseEntity(usuarioRepo.findAll(), HttpStatus.OK);
@@ -29,12 +30,11 @@ public class UsuarioImpl implements UsuarioInt{
     
     @Override
     public ResponseEntity<Usuario> create(Usuario usuario) throws Exception {
-        Usuario usuar = new Usuario();
-        usuar.setCorreo(usuario.getCorreo());
-        usuar.setNombreUsuario(usuario.getNombreUsuario());
-        usuar.setPassword(usuario.getPassword());
-        
-        return new ResponseEntity(usuarioRepo.save(usuar), HttpStatus.OK);
+         if (usuario.getAreaTrabajo() == null) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }      
+         usuarioRepo.save(usuario);
+        return new ResponseEntity(usuario, HttpStatus.OK);
     }
     
 }

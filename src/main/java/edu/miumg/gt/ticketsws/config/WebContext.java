@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableTransactionManagement
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.miumg.wstickets.ws"})
+@ComponentScan(basePackages = {"edu.miumg.gt.ticketsws"})
 public class WebContext extends WebMvcConfigurerAdapter {
 
     public static Logger log = LoggerFactory.getLogger(WebContext.class);

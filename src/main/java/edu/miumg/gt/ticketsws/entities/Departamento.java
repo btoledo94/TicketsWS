@@ -10,12 +10,12 @@ import javax.persistence.Table;
 @Entity()
 @Table(name = "DEPARTAMENTO", schema = "TICKETS")
 public class Departamento implements java.io.Serializable{
-    @Id
+    @Id()
     @Column(name = "ID_Departamento")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "NameDepartamento", length = 50)
+    @Column(name = "NameDepartamento")
     private String NombreDepartamento;
 
     public Departamento(Integer id, String NombreDepartamento) {

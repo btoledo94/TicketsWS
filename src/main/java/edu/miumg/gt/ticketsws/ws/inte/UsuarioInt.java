@@ -5,6 +5,7 @@
  */
 package edu.miumg.gt.ticketsws.ws.inte;
 
+import edu.miumg.gt.ticketsws.entities.AreaTrabajo;
 import edu.miumg.gt.ticketsws.entities.Usuario;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public interface UsuarioInt {
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
     public ResponseEntity<Usuario> create(
     // @RequestParam(value = "correo", defaultValue = "") String correo
-            @RequestBody Usuario usuario
+            @RequestBody Usuario usuario            
     ) throws Exception;
     
 }
