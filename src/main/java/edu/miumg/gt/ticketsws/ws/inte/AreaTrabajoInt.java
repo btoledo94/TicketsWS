@@ -6,6 +6,7 @@
 package edu.miumg.gt.ticketsws.ws.inte;
 
 import edu.miumg.gt.ticketsws.entities.AreaTrabajo;
+import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 public interface AreaTrabajoInt {
     
     @Transactional(readOnly = true)
-    @RequestMapping(value={"","/getfindByDepartamentoId"},method=RequestMethod.GET)
-    public ResponseEntity<AreaTrabajo> findAll(
+    @RequestMapping(value="/getfindByDepartamentoId",method=RequestMethod.GET)
+    public ResponseEntity<List<AreaTrabajo>> doGetFindAll(
             @RequestParam(value = "departamentoId" , defaultValue = "0") Integer departamentoId
+    ) throws Exception;
+    
+    @Transactional(readOnly = true)
+    @RequestMapping(value="/getById", method = RequestMethod.GET)
+    public ResponseEntity<AreaTrabajo> doGetById(
+            @RequestParam(value = "id") Integer id
     ) throws Exception;
 }

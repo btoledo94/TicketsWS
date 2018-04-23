@@ -6,7 +6,6 @@
 package edu.miumg.gt.ticketsws.ws.repo;
 
 import edu.miumg.gt.ticketsws.entities.Departamento;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository()
 public interface DepartamentoRepo extends JpaRepository<Departamento,Integer>{
-      @Override()
-    List<Departamento> findAll();
+
 }

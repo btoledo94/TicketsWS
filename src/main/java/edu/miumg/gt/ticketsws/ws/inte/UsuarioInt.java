@@ -35,4 +35,11 @@ public interface UsuarioInt {
             @RequestBody Usuario usuario            
     ) throws Exception;
     
+  //  @Transactional()
+   // @RequestMapping(value={"","/login"},method = RequestMethod.GET)
+    //public ResponseEntity<Usuario> Login(
+      //      @RequestParam(value = "correo", defaultValue = "") String correo,
+        //    @RequestParam(value = "password", defaultValue = "") String password
+  //  ) throws Exception;
+    
 }

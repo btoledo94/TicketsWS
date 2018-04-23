@@ -5,8 +5,7 @@
  */
 package edu.miumg.gt.ticketsws.ws.repo;
 
-import edu.miumg.gt.ticketsws.entities.Usuario;
-import java.util.List;
+import edu.miumg.gt.ticketsws.entities.Sesion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,11 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author BYRON TOLEDO
  */
 @Repository()
-public interface UsuarioRepo extends JpaRepository<Usuario,Integer>{
-    
-    Usuario findByCorreo(String correo);
-    
-     @Override()
-    List<Usuario> findAll();
-       
+public interface SesionRepo extends JpaRepository<Sesion, Integer>{
+    Sesion findByToken(String token);
 }

@@ -23,27 +23,26 @@ public class Usuario implements java.io.Serializable {
     private Integer id;
     
     @Column(name = "Correo")
-    private String Correo;
+    private String correo;
     
    @Column(name = "UsuarioNombre")
-    private String NombreUsuario;
+    private String nombreUsuario;
    
    @Column(name = "Password")
-    private String Password;
+    private String password;
     
    @ManyToOne
     @JoinColumn(name="AreaTrabajo_id")
     private AreaTrabajo areaTrabajo;
 
-    public Usuario(Integer id, String Correo, String NombreUsuario, String Password, AreaTrabajo areaTrabajo) {
+    public Usuario(Integer id, String correo, String nombreUsuario, String password, AreaTrabajo areaTrabajo) {
         this.id = id;
-        this.Correo = Correo;
-        this.NombreUsuario = NombreUsuario;
-        this.Password = Password;
+        this.correo = correo;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
         this.areaTrabajo = areaTrabajo;
     }
-
-       
+      
     public Usuario() {
     }
 
@@ -56,28 +55,29 @@ public class Usuario implements java.io.Serializable {
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
-    public void setCorreo(String Correo) {
-        this.Correo = Correo;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getNombreUsuario() {
-        return NombreUsuario;
+        return nombreUsuario;
     }
 
-    public void setNombreUsuario(String NombreUsuario) {
-        this.NombreUsuario = NombreUsuario;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
 
     public AreaTrabajo getAreaTrabajo() {
         return areaTrabajo;

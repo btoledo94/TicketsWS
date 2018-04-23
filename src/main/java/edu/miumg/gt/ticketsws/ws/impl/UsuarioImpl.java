@@ -9,6 +9,7 @@ package edu.miumg.gt.ticketsws.ws.impl;
 import edu.miumg.gt.ticketsws.entities.Usuario;
 import edu.miumg.gt.ticketsws.ws.inte.UsuarioInt;
 import edu.miumg.gt.ticketsws.ws.repo.UsuarioRepo;
+import edu.miumg.gt.ticketsws.ws.security.Md5Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +33,15 @@ public class UsuarioImpl implements UsuarioInt{
     public ResponseEntity<Usuario> create(Usuario usuario) throws Exception {
          if (usuario.getAreaTrabajo() == null) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }      
+        } 
+         
+          if (usuario.getCorreo()== null) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } 
+         
+         usuario.setPassword(Md5Encrypt.get_md5(usuario.getPassword()));
          usuarioRepo.save(usuario);
         return new ResponseEntity(usuario, HttpStatus.OK);
     }
-    
+   
 }

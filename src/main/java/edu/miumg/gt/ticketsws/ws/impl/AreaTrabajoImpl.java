@@ -8,6 +8,7 @@ package edu.miumg.gt.ticketsws.ws.impl;
 import edu.miumg.gt.ticketsws.entities.AreaTrabajo;
 import edu.miumg.gt.ticketsws.ws.inte.AreaTrabajoInt;
 import edu.miumg.gt.ticketsws.ws.repo.AreaTrabajoRepo;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,22 @@ public class AreaTrabajoImpl implements AreaTrabajoInt{
     private AreaTrabajoRepo areaTrabajoRepo;
     
     @Override
-    public ResponseEntity<AreaTrabajo> findAll(Integer departamentoId) throws Exception {
-      return new ResponseEntity(areaTrabajoRepo.findByDepartamentoId(departamentoId), HttpStatus.OK);  
+    public ResponseEntity<List<AreaTrabajo>> doGetFindAll(Integer departamentoId) throws Exception {
+      return new ResponseEntity<>(areaTrabajoRepo.findByDepartamentoId(departamentoId), HttpStatus.OK);  
     }
+
+    @Override
+    public ResponseEntity<AreaTrabajo> doGetById(Integer id) throws Exception {
+        
+        AreaTrabajo area = areaTrabajoRepo.findOne(id);
+        
+        if(null == area){
+            return new ResponseEntity("Area de Trabajo no Encontrada", HttpStatus.NOT_FOUND);
+        }
+        
+        return new ResponseEntity<>(area, HttpStatus.OK);
+        
+    }
+    
+    
 }

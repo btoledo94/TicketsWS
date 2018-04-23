@@ -5,12 +5,10 @@
  */
 package edu.miumg.gt.ticketsws.ws.inte;
 
-import edu.miumg.gt.ticketsws.entities.Departamento;
-import java.util.List;
+import edu.miumg.gt.ticketsws.entities.Sesion;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,16 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @author BYRON TOLEDO
  */
 @RestController()
-@RequestMapping(value = "/api/Departamento",produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-public interface DepartamentoInt {
+@RequestMapping(value = "/api/Sesion", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+public interface SesionInt {
     
-    @Transactional(readOnly = true)
-    @RequestMapping(value={"","/"},method=RequestMethod.GET)
-    public ResponseEntity<List<Departamento>> doGetAll() throws Exception;
-    
-    @Transactional(readOnly = true)
-    @RequestMapping(value = "/getId", method = RequestMethod.GET)
-    public ResponseEntity<Departamento> doGetById(
-            @RequestParam(name = "id") Integer id
+     @Transactional()
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ResponseEntity<Sesion> login(
+            @RequestParam(value = "correo", defaultValue = "") String correo,
+            @RequestParam(value = "password", defaultValue = "") String password
     ) throws Exception;
+    
+    @Transactional()
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public ResponseEntity<Sesion> logout(
+            @RequestParam(value = "token", defaultValue = "") String token            
+    ) throws Exception;
+    
 }

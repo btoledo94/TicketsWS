@@ -58,6 +58,40 @@ public class AreaTrabajo implements java.io.Serializable{
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.NombreArea);
+        hash = 97 * hash + Objects.hashCode(this.departamento);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AreaTrabajo other = (AreaTrabajo) obj;
+        if (!Objects.equals(this.NombreArea, other.NombreArea)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return Objects.equals(this.departamento, other.departamento);
+    }
+
+    @Override
+    public String toString() {
+        return "AreaTrabajo{" + "id=" + id + ", NombreArea=" + NombreArea + ", departamento=" + departamento + '}';
+    }
     
-           
 }
