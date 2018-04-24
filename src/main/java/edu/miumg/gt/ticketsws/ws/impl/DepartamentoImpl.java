@@ -40,7 +40,4 @@ public class DepartamentoImpl implements DepartamentoInt {
         return new ResponseEntity<>(dep, HttpStatus.OK);
         
     }
-    
-    
-            
 }

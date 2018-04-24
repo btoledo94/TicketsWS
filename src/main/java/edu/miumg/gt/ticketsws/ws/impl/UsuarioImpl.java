@@ -10,6 +10,7 @@ import edu.miumg.gt.ticketsws.entities.Usuario;
 import edu.miumg.gt.ticketsws.ws.inte.UsuarioInt;
 import edu.miumg.gt.ticketsws.ws.repo.UsuarioRepo;
 import edu.miumg.gt.ticketsws.ws.security.Md5Encrypt;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,5 +44,11 @@ public class UsuarioImpl implements UsuarioInt{
          usuarioRepo.save(usuario);
         return new ResponseEntity(usuario, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Usuario> doGetFindAll(String correo) throws Exception {
+     return new ResponseEntity<>(usuarioRepo.findByCorreo(correo), HttpStatus.OK);
+    }
    
+    
 }

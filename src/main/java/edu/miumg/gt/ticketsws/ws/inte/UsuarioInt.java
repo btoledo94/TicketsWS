@@ -7,6 +7,7 @@ package edu.miumg.gt.ticketsws.ws.inte;
 
 import edu.miumg.gt.ticketsws.entities.AreaTrabajo;
 import edu.miumg.gt.ticketsws.entities.Usuario;
+import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,12 @@ public interface UsuarioInt {
     public ResponseEntity<Usuario> create(
     // @RequestParam(value = "correo", defaultValue = "") String correo
             @RequestBody Usuario usuario            
+    ) throws Exception;
+    
+    @Transactional(readOnly = true)
+    @RequestMapping(value="/getfindByUsuario",method=RequestMethod.GET)
+    public ResponseEntity<Usuario> doGetFindAll(
+            @RequestParam(value = "correo" , defaultValue = "0") String correo
     ) throws Exception;
     
   //  @Transactional()
