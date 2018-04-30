@@ -34,7 +34,6 @@ public class Usuario implements java.io.Serializable {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "AreaTrabajo_id")
     private AreaTrabajo areaTrabajo;
 
     public Usuario(Integer id, String correo, String nombreUsuario, String password, AreaTrabajo areaTrabajo) {

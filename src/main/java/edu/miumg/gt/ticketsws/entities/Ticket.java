@@ -37,7 +37,6 @@ public class Ticket implements java.io.Serializable{
    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn()
-    @Column(name = "usuario_creado")
     private Usuario usuario;
     
     @ManyToOne()
