@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController()
 @RequestMapping(value = "/api/TicketDetalle",produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-public interface Detalle_TicketInt {
+public interface TicketDetalleInt {
     
 }

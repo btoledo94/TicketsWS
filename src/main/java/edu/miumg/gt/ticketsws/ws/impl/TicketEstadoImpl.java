@@ -5,28 +5,28 @@
  */
 package edu.miumg.gt.ticketsws.ws.impl;
 
-import edu.miumg.gt.ticketsws.entities.Ticket_Estado;
-import edu.miumg.gt.ticketsws.ws.inte.Ticket_EstadoInt;
-import edu.miumg.gt.ticketsws.ws.repo.Ticket_EstadoRepo;
+import edu.miumg.gt.ticketsws.entities.TicketEstado;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import edu.miumg.gt.ticketsws.ws.inte.TicketEstadoInt;
+import edu.miumg.gt.ticketsws.ws.repo.TicketEstadoRepo;
 
 /**
  *
  * @author BYRON TOLEDO
  */
 @Component()
-public class Ticket_EstadoImpl implements Ticket_EstadoInt{
+public class TicketEstadoImpl implements TicketEstadoInt{
     
     @Autowired()
-    private Ticket_EstadoRepo ticket_EstadoRepo;
+    private TicketEstadoRepo ticketEstadoRepo;
 
     @Override
-    public ResponseEntity<List<Ticket_Estado>> doGetAll() throws Exception {
-        return new ResponseEntity<>(ticket_EstadoRepo.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<TicketEstado>> doGetAll() throws Exception {
+        return new ResponseEntity(ticketEstadoRepo.findAll(), HttpStatus.OK);
     }
     
     

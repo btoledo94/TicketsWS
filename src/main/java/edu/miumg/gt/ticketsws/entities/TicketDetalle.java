@@ -13,15 +13,16 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity()
-@Table(name = "Detalle_Ticket", schema = "TICKETS")
-public class Detalle_Ticket implements java.io.Serializable{
+@Table(schema = "TICKETS")
+public class TicketDetalle implements java.io.Serializable{
+
+    private static final long serialVersionUID = -2206214849087814743L;
     
     @Id()
     @Column(name = "ID_DetalleTicket")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "Asunto")
     private String asunto;
     
     @Temporal(TemporalType.TIMESTAMP)
@@ -32,10 +33,11 @@ public class Detalle_Ticket implements java.io.Serializable{
     @Column(name = "usuario_Asignado")
     private Usuario usuario;
 
-    public Detalle_Ticket() {
+    public TicketDetalle() {
+        //Default Constructor
     }
 
-    public Detalle_Ticket(String asunto, Date fechaActualizar, Usuario usuario) {
+    public TicketDetalle(String asunto, Date fechaActualizar, Usuario usuario) {
         this.asunto = asunto;
         this.fechaActualizar = fechaActualizar;
         this.usuario = usuario;

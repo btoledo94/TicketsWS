@@ -5,7 +5,7 @@
  */
 package edu.miumg.gt.ticketsws.ws.inte;
 
-import edu.miumg.gt.ticketsws.entities.Ticket_Estado;
+import edu.miumg.gt.ticketsws.entities.TicketEstado;
 import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController()
 @RequestMapping(value = "/api/TicketEstado",produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-public interface Ticket_EstadoInt {
+public interface TicketEstadoInt {
     
     @Transactional(readOnly = true)
     @RequestMapping(value={"","/"},method=RequestMethod.GET)
-    public ResponseEntity<List<Ticket_Estado>> doGetAll() throws Exception;
+    public ResponseEntity<List<TicketEstado>> doGetAll() throws Exception;
 }

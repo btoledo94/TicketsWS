@@ -9,20 +9,21 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(name = "Estado_Ticket", schema = "TICKETS")
-public class Ticket_Estado implements java.io.Serializable{
+public class TicketEstado implements java.io.Serializable{
+
+    private static final long serialVersionUID = 8988747743018908883L;
     
     @Id()
     @Column(name = "ID_EstadoTicket")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "Estado")
     private String estado;
 
-    public Ticket_Estado() {
+    public TicketEstado() {
     }
 
-    public Ticket_Estado(String estado) {
+    public TicketEstado(String estado) {
         this.estado = estado;
     }
 
