@@ -23,6 +23,8 @@ import javax.persistence.TemporalType;
 @Entity()
 @Table(name = "Sesion", schema = "TICKETS")
 public class Sesion implements java.io.Serializable{
+
+    private static final long serialVersionUID = 7182262673923878295L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -24,6 +24,8 @@ public class Ticket implements java.io.Serializable{
     @Column(name = "ID_Ticket")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
+    private String tituloProblema;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInicio;
@@ -56,16 +58,19 @@ public class Ticket implements java.io.Serializable{
         //Default Constructor
     }
 
-    public Ticket(Date fechaInicio, Date fechaFin, TicketEstado ticketEstado, Usuario usuario, Usuario usuarioAsignado, Departamento departamento, AreaTrabajo areaTrabajo, Boolean active) {
+    public Ticket(String tituloProblema, Date fechaInicio, Date fechaFin, TicketEstado ticketEstado, Usuario usuario, Usuario usuarioAsignado, Departamento departamento, AreaTrabajo areaTrabajo, Boolean active) {
+        this.tituloProblema = tituloProblema;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.ticketEstado = ticketEstado;
         this.usuario = usuario;
-        this.usuarioAsignado = null != usuarioAsignado ? usuarioAsignado : null;
+        this.usuarioAsignado = usuarioAsignado;
         this.departamento = departamento;
         this.areaTrabajo = areaTrabajo;
         this.active = active;
     }
+
+    
 
     public Integer getId() {
         return id;
@@ -139,18 +144,27 @@ public class Ticket implements java.io.Serializable{
         this.active = active;
     }
 
+    public String getTituloProblema() {
+        return tituloProblema;
+    }
+
+    public void setTituloProblema(String tituloProblema) {
+        this.tituloProblema = tituloProblema;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.fechaInicio);
-        hash = 53 * hash + Objects.hashCode(this.fechaFin);
-        hash = 53 * hash + Objects.hashCode(this.ticketEstado);
-        hash = 53 * hash + Objects.hashCode(this.usuario);
-        hash = 53 * hash + Objects.hashCode(this.usuarioAsignado);
-        hash = 53 * hash + Objects.hashCode(this.departamento);
-        hash = 53 * hash + Objects.hashCode(this.areaTrabajo);
-        hash = 53 * hash + Objects.hashCode(this.active);
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.tituloProblema);
+        hash = 67 * hash + Objects.hashCode(this.fechaInicio);
+        hash = 67 * hash + Objects.hashCode(this.fechaFin);
+        hash = 67 * hash + Objects.hashCode(this.ticketEstado);
+        hash = 67 * hash + Objects.hashCode(this.usuario);
+        hash = 67 * hash + Objects.hashCode(this.usuarioAsignado);
+        hash = 67 * hash + Objects.hashCode(this.departamento);
+        hash = 67 * hash + Objects.hashCode(this.areaTrabajo);
+        hash = 67 * hash + Objects.hashCode(this.active);
         return hash;
     }
 
@@ -166,6 +180,9 @@ public class Ticket implements java.io.Serializable{
             return false;
         }
         final Ticket other = (Ticket) obj;
+        if (!Objects.equals(this.tituloProblema, other.tituloProblema)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -190,16 +207,20 @@ public class Ticket implements java.io.Serializable{
         if (!Objects.equals(this.areaTrabajo, other.areaTrabajo)) {
             return false;
         }
-        return Objects.equals(this.active, other.active);
+        if (!Objects.equals(this.active, other.active)) {
+            return false;
+        }
+        return true;
     }
     
-    public static Ticket create(Date fechaInicio, Date fechaFin, TicketEstado ticketEstado, Usuario usuario, Usuario usuarioAsignado, Departamento departamento, AreaTrabajo areaTrabajo, Boolean active){
+       
+    public static Ticket create(String tituloProblema,Date fechaInicio, Date fechaFin, TicketEstado ticketEstado, Usuario usuario, Usuario usuarioAsignado, Departamento departamento, AreaTrabajo areaTrabajo, Boolean active){
         
-        if(null == usuario || null == departamento || null == areaTrabajo){
+        if(null == usuario || null == departamento){
             return null;
         }
         
-        return new Ticket(fechaInicio, fechaFin, ticketEstado, usuario, usuarioAsignado, departamento,areaTrabajo, active);
+        return new Ticket(tituloProblema,fechaInicio, fechaFin, ticketEstado, usuario, usuarioAsignado, departamento,areaTrabajo, active);
     }
 
 }

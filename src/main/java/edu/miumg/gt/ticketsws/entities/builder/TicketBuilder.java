@@ -19,6 +19,7 @@ import java.util.Date;
 public class TicketBuilder {
     
    private Date fechaInicio;
+   private String tituloProblema;
    private Date fechaFin;
    private TicketEstado ticketEstado;
    private Usuario usuario;
@@ -30,6 +31,12 @@ public class TicketBuilder {
     public TicketBuilder() {
         //Default Constructor
     }
+
+    public TicketBuilder setTituloProblema(String tituloProblema) {
+        this.tituloProblema = tituloProblema;
+        return this;
+    }
+       
 
     public TicketBuilder setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
@@ -72,7 +79,7 @@ public class TicketBuilder {
     }
        
    public Ticket createTicket(){
-       return Ticket.create(fechaInicio, fechaFin, ticketEstado, usuario, usuarioAsignado, departamento, areaTrabajo, active);
+       return Ticket.create(tituloProblema,fechaInicio, fechaFin, ticketEstado, usuario, usuarioAsignado, departamento, areaTrabajo, active);
    }
     
 }

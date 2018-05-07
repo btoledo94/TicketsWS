@@ -17,6 +17,7 @@ import edu.miumg.gt.ticketsws.ws.repo.DepartamentoRepo;
 import edu.miumg.gt.ticketsws.ws.repo.TicketEstadoRepo;
 import edu.miumg.gt.ticketsws.ws.repo.TicketRepo;
 import edu.miumg.gt.ticketsws.ws.repo.UsuarioRepo;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,27 +46,26 @@ public class TicketImpl implements TicketInt{
     private AreaTrabajoRepo areaTrabajoRepo;
 
     @Override
-    public ResponseEntity<Ticket> create(Ticket ticket) throws Exception {
+    public ResponseEntity<Ticket> create(Ticket ticket,String correo) throws Exception {
         
         TicketEstado ticketEstado = ticketEstadoRepo.findByEstado("CREADO");
         
-        Usuario usuarioCreo = usuarioRepo.findOne(ticket.getUsuario().getId());
+        Usuario usuarioCreo = usuarioRepo.findByCorreo(correo);
         
-        Departamento departamento = departamentoRepo.findOne(ticket.getDepartamento().getId());
+        //Departamento departamento = departamentoRepo.findOne(departamentoId);
         
-        AreaTrabajo areaTrabajo = areaTrabajoRepo.findOne(ticket.getAreaTrabajo().getId());
+        //AreaTrabajo areaTrabajo = areaTrabajoRepo.findOne(ticket.getAreaTrabajo().getId());
         
-        if(null == ticketEstado || null == usuarioCreo || null == departamento || null == areaTrabajo){
+        if(null == ticketEstado || null == usuarioCreo){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         
         Ticket ticketToSave = new TicketBuilder()
                 .setUsuario(usuarioCreo)
                 .setTicketEstado(ticketEstado)
-                .setFechaInicio(ticket.getFechaInicio())
-                .setFechaFin(ticket.getFechaFin())
-                .setDepartamento(departamento)
-                .setAreaTrabajo(areaTrabajo)               
+                .setTituloProblema(ticket.getTituloProblema())
+                .setFechaInicio(new Date())
+                .setDepartamento(ticket.getDepartamento())
                 .setActive(Boolean.TRUE)
                 .createTicket();
 

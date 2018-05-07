@@ -13,6 +13,9 @@ import javax.persistence.Table;
 @Entity()
 @Table(name = "AreaTrabajo", schema = "TICKETS")
 public class AreaTrabajo implements java.io.Serializable{
+
+    private static final long serialVersionUID = -1903979388821696834L;
+        
     @Id()
     @Column(name = "ID_Areatrabajo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
