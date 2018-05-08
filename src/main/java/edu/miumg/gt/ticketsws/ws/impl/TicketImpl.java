@@ -18,6 +18,7 @@ import edu.miumg.gt.ticketsws.ws.repo.TicketEstadoRepo;
 import edu.miumg.gt.ticketsws.ws.repo.TicketRepo;
 import edu.miumg.gt.ticketsws.ws.repo.UsuarioRepo;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,4 +72,10 @@ public class TicketImpl implements TicketInt{
 
         return new ResponseEntity(ticketRepo.save(ticketToSave), HttpStatus.OK);
     }
+
+    //@Override
+    //public ResponseEntity<List<Ticket>> getIticket(Integer idDepartamento) throws Exception {
+  //      return new ResponseEntity<>(ticketRepo.findByDepartamentoAndActive(idDepartamento,1), HttpStatus.OK);
+  //  }
+   
 }

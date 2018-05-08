@@ -21,7 +21,7 @@ public interface TicketDetalleInt {
     @Transactional()
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
     public ResponseEntity<TicketDetalle> create(
-            @RequestBody TicketDetalle ticketDetalle,
+            @RequestParam(value = "asunto", defaultValue = "") String asunto,
             @RequestParam(value = "ticketId", defaultValue = "") Integer ticketId
     ) throws Exception;
     

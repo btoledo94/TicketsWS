@@ -29,6 +29,8 @@ public class TicketDetalleImpl implements TicketDetalleInt{
     @Autowired()
     private TicketDetalleRepo ticketDetalleRepo;
     
+    Ticket ticket = new Ticket();
+    
     @Autowired()
     private TicketRepo ticketRepo;
     
@@ -36,22 +38,18 @@ public class TicketDetalleImpl implements TicketDetalleInt{
     private UsuarioRepo usuarioRepo;
     
     @Override
-    public ResponseEntity<TicketDetalle> create(TicketDetalle ticketDetalle, Integer ticketId) throws Exception {
+    public ResponseEntity<TicketDetalle> create(String asunto, Integer ticketId) throws Exception {
         
-        Ticket ticket = ticketRepo.findOne(ticketId);
-        Usuario usuario = usuarioRepo.findOne(ticket.getUsuario().getId()); 
-        
-        if(null==ticketDetalle.getAsunto()){
-        return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
-           
-        ticket.setUsuario(usuario);
+       ticket = ticketRepo.findOne(ticketId);
+       // Usuario usuario = usuarioRepo.findOne(ticket.getUsuario().getId()); 
+             
         
        TicketDetalle ticketDetalleSave = new TicketDetalleBuilder()
-               .setAsunto(ticketDetalle.getAsunto())
+               .setAsunto(asunto)
                .setFechaActualizar(new Date())
                .setTicket(ticket)
                .createTicketDetalle();
+       
         return new ResponseEntity(ticketDetalleRepo.save(ticketDetalleSave), HttpStatus.OK);
     }
     
