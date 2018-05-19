@@ -20,17 +20,13 @@ public class Usuario implements java.io.Serializable {
     private static final long serialVersionUID = 4390851635399179260L;
 
     @Id()
-    @Column(name = "ID_Usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "Correo")
     private String correo;
 
-    @Column(name = "UsuarioNombre")
     private String nombreUsuario;
 
-    @Column(name = "Password")
     private String password;
 
     @ManyToOne

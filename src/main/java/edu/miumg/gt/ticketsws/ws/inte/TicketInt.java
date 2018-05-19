@@ -32,10 +32,10 @@ public interface TicketInt {
                         
     ) throws Exception;
     
-    //@Transactional(readOnly = true)
-    //@RequestMapping(value={"","/"},method=RequestMethod.GET)
-    //public ResponseEntity<List<Ticket>> getIticket(
-    //@RequestParam(value = "idDepartamento", defaultValue = "") Integer idDepartamento
-     //   ) throws Exception;
+    @Transactional(readOnly = true)
+    @RequestMapping(value={"","/"},method=RequestMethod.GET)
+   public ResponseEntity<Ticket> findAll(
+    @RequestParam(value = "idDepartamento", defaultValue = "") Integer idDepartamento
+      ) throws Exception;
     
 }

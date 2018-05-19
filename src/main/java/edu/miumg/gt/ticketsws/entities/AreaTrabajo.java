@@ -17,20 +17,17 @@ public class AreaTrabajo implements java.io.Serializable{
     private static final long serialVersionUID = -1903979388821696834L;
         
     @Id()
-    @Column(name = "ID_Areatrabajo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "NameArea")
-    private String NombreArea;
+    private String nombreArea;
 
     @ManyToOne
-    @JoinColumn(name="departamento_id")
     private Departamento departamento;
 
-    public AreaTrabajo(Integer id, String NombreArea, Departamento departamento) {
+    public AreaTrabajo(Integer id, String nombreArea, Departamento departamento) {
         this.id = id;
-        this.NombreArea = NombreArea;
+        this.nombreArea = nombreArea;
         this.departamento = departamento;
     }
 
@@ -47,12 +44,14 @@ public class AreaTrabajo implements java.io.Serializable{
     }
 
     public String getNombreArea() {
-        return NombreArea;
+        return nombreArea;
     }
 
-    public void setNombreArea(String NombreArea) {
-        this.NombreArea = NombreArea;
+    public void setNombreArea(String nombreArea) {
+        this.nombreArea = nombreArea;
     }
+
+   
 
     public Departamento getDepartamento() {
         return departamento;
@@ -65,9 +64,9 @@ public class AreaTrabajo implements java.io.Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.NombreArea);
-        hash = 97 * hash + Objects.hashCode(this.departamento);
+        hash = 23 * hash + Objects.hashCode(this.id);
+        hash = 23 * hash + Objects.hashCode(this.nombreArea);
+        hash = 23 * hash + Objects.hashCode(this.departamento);
         return hash;
     }
 
@@ -83,18 +82,23 @@ public class AreaTrabajo implements java.io.Serializable{
             return false;
         }
         final AreaTrabajo other = (AreaTrabajo) obj;
-        if (!Objects.equals(this.NombreArea, other.NombreArea)) {
+        if (!Objects.equals(this.nombreArea, other.nombreArea)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.departamento, other.departamento);
+        if (!Objects.equals(this.departamento, other.departamento)) {
+            return false;
+        }
+        return true;
     }
+
+   
 
     @Override
     public String toString() {
-        return "AreaTrabajo{" + "id=" + id + ", NombreArea=" + NombreArea + ", departamento=" + departamento + '}';
+        return "AreaTrabajo{" + "id=" + id + ", nombreArea=" + nombreArea + ", departamento=" + departamento + '}';
     }
     
 }

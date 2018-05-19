@@ -73,9 +73,9 @@ public class TicketImpl implements TicketInt{
         return new ResponseEntity(ticketRepo.save(ticketToSave), HttpStatus.OK);
     }
 
-    //@Override
-    //public ResponseEntity<List<Ticket>> getIticket(Integer idDepartamento) throws Exception {
-  //      return new ResponseEntity<>(ticketRepo.findByDepartamentoAndActive(idDepartamento,1), HttpStatus.OK);
-  //  }
+   @Override
+   public ResponseEntity<Ticket> findAll(Integer idDepartamento) throws Exception {
+     return new ResponseEntity(ticketRepo.findByDepartamentoId(idDepartamento), HttpStatus.OK);
+   }
    
 }

@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository()
 public interface TicketRepo extends JpaRepository<Ticket,Integer>{
     
-   // @Query("from ticket as c where c.usuario.areaTrabajo.departamento.id= :Id1 And c.active= :Id2")
-   // List<Ticket> findByDepartamentoAndActive(@Param("Id1")Integer Id1, @Param("Id2") Integer Id2);
+   @Query("from Ticket as c where c.departamento.id = :Id1")
+   List<Ticket> findByDepartamentoId(@Param("Id1") Integer Id1);
 }

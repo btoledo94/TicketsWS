@@ -15,16 +15,14 @@ public class Departamento implements java.io.Serializable{
     private static final long serialVersionUID = -4602876523555551831L;
     
     @Id()
-    @Column(name = "ID_Departamento")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "NameDepartamento")
-    private String NombreDepartamento;
+    private String nombreDepartamento;
 
-    public Departamento(Integer id, String NombreDepartamento) {
+    public Departamento(Integer id, String nombreDepartamento) {
         this.id = id;
-        this.NombreDepartamento = NombreDepartamento;
+        this.nombreDepartamento = nombreDepartamento;
     }
 
     public Departamento() {
@@ -39,18 +37,18 @@ public class Departamento implements java.io.Serializable{
     }
 
     public String getNombreDepartamento() {
-        return NombreDepartamento;
+        return nombreDepartamento;
     }
 
-    public void setNombreDepartamento(String NombreDepartamento) {
-        this.NombreDepartamento = NombreDepartamento;
+    public void setNombreDepartamento(String nombreDepartamento) {
+        this.nombreDepartamento = nombreDepartamento;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.id);
-        hash = 37 * hash + Objects.hashCode(this.NombreDepartamento);
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.nombreDepartamento);
         return hash;
     }
 
@@ -66,15 +64,14 @@ public class Departamento implements java.io.Serializable{
             return false;
         }
         final Departamento other = (Departamento) obj;
-        if (!Objects.equals(this.NombreDepartamento, other.NombreDepartamento)) {
+        if (!Objects.equals(this.nombreDepartamento, other.nombreDepartamento)) {
             return false;
         }
-        return Objects.equals(this.id, other.id);
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
-    @Override
-    public String toString() {
-        return "Departamento{" + "id=" + id + ", NombreDepartamento=" + NombreDepartamento + '}';
-    }
-      
+        
 }
