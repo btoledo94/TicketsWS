@@ -42,6 +42,13 @@ public interface UsuarioInt {
             @RequestParam(value = "correo" , defaultValue = "0") String correo
     ) throws Exception;
     
+    
+    @Transactional(readOnly = true)
+    @RequestMapping(value="/getfindByUsuario2",method=RequestMethod.GET)
+    public ResponseEntity<Usuario> mostrarUsuarioArea(
+            @RequestParam(value = "idArea" , defaultValue = "") Integer idArea
+    ) throws Exception;
+    
   //  @Transactional()
    // @RequestMapping(value={"","/login"},method = RequestMethod.GET)
     //public ResponseEntity<Usuario> Login(

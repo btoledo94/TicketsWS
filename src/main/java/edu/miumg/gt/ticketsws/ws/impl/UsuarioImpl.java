@@ -49,6 +49,14 @@ public class UsuarioImpl implements UsuarioInt{
     public ResponseEntity<Usuario> doGetFindAll(String correo) throws Exception {
      return new ResponseEntity<>(usuarioRepo.findByCorreo(correo), HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Usuario> mostrarUsuarioArea(Integer idArea) throws Exception {
+    
+    return new ResponseEntity(usuarioRepo.findByAreatrabajoId(idArea), HttpStatus.OK);
+    }
+    
+    
    
     
 }
