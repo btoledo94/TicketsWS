@@ -8,13 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity()
-@Table(name = "Estado_Ticket", schema = "TICKETS")
+@Table()
 public class TicketEstado implements java.io.Serializable{
 
     private static final long serialVersionUID = 8988747743018908883L;
     
     @Id()
-    @Column(name = "ID_EstadoTicket")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     

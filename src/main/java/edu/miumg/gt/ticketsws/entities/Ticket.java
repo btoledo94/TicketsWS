@@ -21,7 +21,6 @@ public class Ticket implements java.io.Serializable{
     private static final long serialVersionUID = -8506294932409247595L;
     
     @Id()
-    @Column(name = "ID_Ticket")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     

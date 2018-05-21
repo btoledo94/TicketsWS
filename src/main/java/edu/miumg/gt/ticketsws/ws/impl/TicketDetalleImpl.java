@@ -52,5 +52,12 @@ public class TicketDetalleImpl implements TicketDetalleInt{
        
         return new ResponseEntity(ticketDetalleRepo.save(ticketDetalleSave), HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<TicketDetalle> ActualizarDetalle(Integer ticketId) throws Exception {
+       return new ResponseEntity(ticketDetalleRepo.findByTicketId(ticketId), HttpStatus.OK);
+    }
+    
+    
     
 }

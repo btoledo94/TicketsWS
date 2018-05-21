@@ -37,5 +37,20 @@ public interface TicketInt {
    public ResponseEntity<Ticket> findAll(
     @RequestParam(value = "idDepartamento", defaultValue = "") Integer idDepartamento
       ) throws Exception;
+   
+   
+   @Transactional()
+    @RequestMapping(value ="/encabezadoTicket", method = RequestMethod.POST)
+    public ResponseEntity<Ticket> encabezadoUpdate(
+            @RequestParam(value = "idTicket", defaultValue = "") Integer idTicket,
+            @RequestParam(value = "idUsuarioAsig", defaultValue = "") Integer idUsuarioAsig,
+            @RequestParam(value = "idArea", defaultValue = "") Integer idArea
+                        
+    ) throws Exception;
     
+     @Transactional(readOnly = true)
+    @RequestMapping(value="/myTicket",method=RequestMethod.GET)
+   public ResponseEntity<Ticket> myTickets(
+    @RequestParam(value = "idUsuario", defaultValue = "") Integer idUsuario
+      ) throws Exception;
 }

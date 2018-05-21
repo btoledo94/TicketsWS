@@ -25,4 +25,10 @@ public interface TicketDetalleInt {
             @RequestParam(value = "ticketId", defaultValue = "") Integer ticketId
     ) throws Exception;
     
+    @Transactional(readOnly = true)
+    @RequestMapping(value ="/getactualizar", method = RequestMethod.GET)
+    public ResponseEntity<TicketDetalle> ActualizarDetalle(
+            @RequestParam(value = "ticketId", defaultValue = "") Integer ticketId
+    ) throws Exception;
+    
 }
