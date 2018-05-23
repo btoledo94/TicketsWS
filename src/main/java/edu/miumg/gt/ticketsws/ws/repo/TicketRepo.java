@@ -20,4 +20,7 @@ public interface TicketRepo extends JpaRepository<Ticket,Integer>{
    @Query("from Ticket as c where c.usuarioAsignado.id = :Id1 AND c.active = :Id2")
    List<Ticket> findByUsuarioasignadoId(@Param("Id1") Integer Id1,@Param("Id2") Boolean Id2);
    
+   @Query("from Ticket as c where c.usuario.id = :Id1 AND c.active = :Id2")
+   List<Ticket> findByUsuarioId(@Param("Id1") Integer Id1,@Param("Id2") Boolean Id2);
+   
 }

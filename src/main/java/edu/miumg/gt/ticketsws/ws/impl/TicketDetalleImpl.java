@@ -38,15 +38,16 @@ public class TicketDetalleImpl implements TicketDetalleInt{
     private UsuarioRepo usuarioRepo;
     
     @Override
-    public ResponseEntity<TicketDetalle> create(String asunto, Integer ticketId) throws Exception {
+    public ResponseEntity<TicketDetalle> create(String asunto, Integer ticketId, String nombreAsignado, String nombreDeptoArea) throws Exception {
         
        ticket = ticketRepo.findOne(ticketId);
        // Usuario usuario = usuarioRepo.findOne(ticket.getUsuario().getId()); 
-             
-        
+           
        TicketDetalle ticketDetalleSave = new TicketDetalleBuilder()
                .setAsunto(asunto)
                .setFechaActualizar(new Date())
+               .setNombreActualizado(nombreAsignado)
+               .setNombreDeptoArea(nombreDeptoArea)
                .setTicket(ticket)
                .createTicketDetalle();
        

@@ -31,6 +31,10 @@ public class TicketDetalle implements java.io.Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaActualizar;
     
+    private String nombreActualizado;
+    
+    private String nombreDeptoArea;
+    
     private byte[] archivo;    
                 
     @ManyToOne()
@@ -40,20 +44,24 @@ public class TicketDetalle implements java.io.Serializable{
         //Default Constructor
     }
 
-    public TicketDetalle(String asunto, Date fechaActualizar, byte[] archivo, Ticket ticket) {
+    public TicketDetalle(String asunto, Date fechaActualizar, String nombreActualizado, String nombreDeptoArea, byte[] archivo, Ticket ticket) {
         this.asunto = asunto;
         this.fechaActualizar = fechaActualizar;
+        this.nombreActualizado = nombreActualizado;
+        this.nombreDeptoArea = nombreDeptoArea;
         this.archivo = archivo;
         this.ticket = ticket;
     }
+
+    
    
-    public static TicketDetalle create(String asunto, Date fechaActualizar, byte[] archivo,Ticket ticket){
+    public static TicketDetalle create(String asunto, Date fechaActualizar, String nombreActualizado, String nombreDeptoArea, byte[] archivo, Ticket ticket){
         
         if(null == asunto){
             return null;
         }
         
-        return new TicketDetalle(asunto,fechaActualizar,archivo,ticket);
+        return new TicketDetalle(asunto,fechaActualizar,nombreActualizado,nombreDeptoArea,archivo,ticket);
     }
         
 }

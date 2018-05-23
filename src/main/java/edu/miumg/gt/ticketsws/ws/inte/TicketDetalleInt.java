@@ -22,7 +22,9 @@ public interface TicketDetalleInt {
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
     public ResponseEntity<TicketDetalle> create(
             @RequestParam(value = "asunto", defaultValue = "") String asunto,
-            @RequestParam(value = "ticketId", defaultValue = "") Integer ticketId
+            @RequestParam(value = "ticketId", defaultValue = "") Integer ticketId,
+            @RequestParam(value = "nombreAsignado", defaultValue = "") String nombreAsignado,
+            @RequestParam(value = "nombreDeptoArea", defaultValue = "") String nombreDeptoArea
     ) throws Exception;
     
     @Transactional(readOnly = true)
@@ -30,5 +32,7 @@ public interface TicketDetalleInt {
     public ResponseEntity<TicketDetalle> ActualizarDetalle(
             @RequestParam(value = "ticketId", defaultValue = "") Integer ticketId
     ) throws Exception;
+    
+    
     
 }

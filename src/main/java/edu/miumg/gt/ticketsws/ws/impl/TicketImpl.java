@@ -86,12 +86,13 @@ public class TicketImpl implements TicketInt{
    }
 
     @Override
-    public ResponseEntity<Ticket> encabezadoUpdate(Integer idTicket, Integer idUsuarioAsig, Integer idArea) throws Exception {
+    public ResponseEntity<Ticket> encabezadoUpdate(Integer idTicket, Integer idUsuarioAsig, Integer idArea,String nombreActualizado,Integer idDepartamento) throws Exception {
     TicketDetalle ticketDetalle = new TicketDetalle();
      
      Usuario usario=usuarioRepo.findOne(idUsuarioAsig);
      Ticket ticket = ticketRepo.findOne(idTicket);
      AreaTrabajo areaTrabajo=areaTrabajoRepo.findOne(idArea);
+     Departamento departamento = departamentoRepo.findOne(idDepartamento);
      
      ticket.setUsuarioAsignado(usario);
      ticket.setAreaTrabajo(areaTrabajo);
@@ -99,6 +100,8 @@ public class TicketImpl implements TicketInt{
      ticketDetalle.setTicket(ticket);
      ticketDetalle.setAsunto("Estiamado Usuario el ticket fue asignado al tencio "+ticket.getUsuarioAsignado().getNombreUsuario());
      ticketDetalle.setFechaActualizar(new Date());
+     ticketDetalle.setNombreActualizado(nombreActualizado);
+     ticketDetalle.setNombreDeptoArea(departamento.getNombreDepartamento());
      ticketDetalleRepo.save(ticketDetalle);
      return new ResponseEntity(ticketRepo.save(ticket), HttpStatus.OK);
      
@@ -108,4 +111,11 @@ public class TicketImpl implements TicketInt{
     public ResponseEntity<Ticket> myTickets(Integer idUsuario) throws Exception {
      return new ResponseEntity(ticketRepo.findByUsuarioasignadoId(idUsuario,true), HttpStatus.OK);
     }  
+
+    @Override
+    public ResponseEntity<Ticket> myTicketCreado(Integer idUsuario) throws Exception {
+    return new ResponseEntity(ticketRepo.findByUsuarioId(idUsuario,true), HttpStatus.OK);
+    }
+    
+    
 }

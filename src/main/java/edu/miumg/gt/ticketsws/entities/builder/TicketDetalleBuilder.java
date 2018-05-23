@@ -19,6 +19,8 @@ public class TicketDetalleBuilder {
     private Date fechaActualizar;
     private byte[] archivo;
     private Ticket ticket;
+    private String nombreActualizado;    
+    private String nombreDeptoArea;
 
     public TicketDetalleBuilder() {
     
@@ -43,11 +45,22 @@ public class TicketDetalleBuilder {
         this.archivo = archivo;
         return this;
     }
+
+    public TicketDetalleBuilder setNombreActualizado(String nombreActualizado) {
+        this.nombreActualizado = nombreActualizado;
+        return this;
+    }
+
+    public TicketDetalleBuilder setNombreDeptoArea(String nombreDeptoArea) {
+        this.nombreDeptoArea = nombreDeptoArea;
+        return this;
+    }
+    
     
     
     
      public TicketDetalle createTicketDetalle(){
-       return TicketDetalle.create(asunto,fechaActualizar, archivo,ticket);
+       return TicketDetalle.create(asunto,fechaActualizar,nombreActualizado,nombreDeptoArea,archivo,ticket);
    }
      
 }

@@ -44,13 +44,21 @@ public interface TicketInt {
     public ResponseEntity<Ticket> encabezadoUpdate(
             @RequestParam(value = "idTicket", defaultValue = "") Integer idTicket,
             @RequestParam(value = "idUsuarioAsig", defaultValue = "") Integer idUsuarioAsig,
-            @RequestParam(value = "idArea", defaultValue = "") Integer idArea
+            @RequestParam(value = "idArea", defaultValue = "") Integer idArea,
+            @RequestParam(value = "nombreActualizado", defaultValue = "") String nombreActualizado,
+            @RequestParam(value = "idDepartamento", defaultValue = "") Integer idDepartamento
                         
     ) throws Exception;
     
      @Transactional(readOnly = true)
     @RequestMapping(value="/myTicket",method=RequestMethod.GET)
    public ResponseEntity<Ticket> myTickets(
+    @RequestParam(value = "idUsuario", defaultValue = "") Integer idUsuario
+      ) throws Exception;
+   
+   @Transactional(readOnly = true)
+    @RequestMapping(value="/myTicketCreado",method=RequestMethod.GET)
+   public ResponseEntity<Ticket> myTicketCreado(
     @RequestParam(value = "idUsuario", defaultValue = "") Integer idUsuario
       ) throws Exception;
 }
